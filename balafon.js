@@ -1,7 +1,8 @@
 
+
 function setup(){
   createCanvas(1000,800);
-  B = new Balafon(20, 30, 10, 10, 400, 200);
+  B = new Balafon(19, 40, 10, 10, 400, 200);
   B.generatePlanks();
   console.log(B);
 }
@@ -41,13 +42,18 @@ class Balafon{
 		var curr_y = this.start_y;
 		var end_x = this.start_x+this.plank_width;
 		var end_y = this.start_y+curr_height;
+		var tones = ["A", "C", "D", "F", "G#"];
+
 		console.log(height_step);
 		console.log("in the generate");
 		for(let i=0; i<this.num_planks; i++){
 			console.log('IN THE FOR');
 			console.log(height_step);
 			console.log(curr_height);
-			this.planks.push(new Plank(curr_x, curr_y, end_x, end_y, "A2"));
+			var note = tones[(i%tones.length)]+String(Math.floor(((i-1)/tones.length))+1);
+			console.log(note);
+
+			this.planks.push(new Plank(curr_x, curr_y, end_x, end_y, note, i));
 			
 			curr_height = curr_height-height_step;
 			
@@ -81,16 +87,29 @@ class Balafon{
 }
 
 class Plank{
-	constructor(start_x, start_y, end_x, end_y, tone){
+	constructor(start_x, start_y, end_x, end_y, tone, number){
 		this.start_x = start_x;
 		this.start_y = start_y;
 		this.end_x = end_x;
 		this.end_y = end_y;
 		this.tone = tone;
-		this.color = {
-			R: Math.floor((Math.random() * 30) + 70),
-			G: Math.floor((Math.random() * 20) + 30),
-			B: Math.floor((Math.random() * 20) + 30)
+		console.log("TONE: "+this.tone);
+		this.number = number;
+		this.synth = new Tone.Synth().toMaster();
+
+		if((number+1)%5==0){
+			this.color = {
+				R: Math.floor((Math.random() * 30) + 70)*1.75,
+				G: Math.floor((Math.random() * 20) + 30)*1.75,
+				B: Math.floor((Math.random() * 20) + 30)*1.75
+			}
+		}
+		else{
+			this.color = {
+				R: Math.floor((Math.random() * 30) + 70),
+				G: Math.floor((Math.random() * 20) + 30),
+				B: Math.floor((Math.random() * 20) + 30)
+			}
 		}
 		this.clicked = false;
 	}
@@ -103,6 +122,8 @@ class Plank{
 		if(this.mouseInRect()){
 			if(this.clicked){
 				fill(this.color.R/2, this.color.G/2, this.color.B/2);
+				this.play_note();
+				this.clicked=false;
 			}
 			else{
 				fill(this.color.R/1.3, this.color.G/1.3, this.color.B/1.3);
@@ -114,6 +135,9 @@ class Plank{
 			fill(this.color.R, this.color.G, this.color.B);
 		}
 		rect(this.start_x, this.start_y, this.end_x-this.start_x, this.end_y-this.start_y, 5);
+		
+		fill(255);
+  		text(this.number, this.start_x+this.plank_width-10, this.end_y-10);
 	}
 
 	press(){
@@ -122,5 +146,11 @@ class Plank{
 		}
 	}
 
+	play_note(){
+		//play a middle 'C' for the duration of an 8th note
+		this.synth.triggerAttackRelease(this.tone, '8n');
+		console.log("CLICK: "+this.tone+" note");
+	}
+	
 		
 }
