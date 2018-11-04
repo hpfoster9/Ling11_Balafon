@@ -1,0 +1,196 @@
+// Sfz exported from sf2 by Polyphone
+// Name     :Balafon_Soft
+// Author   :
+// Copyright:
+// Date     :2018/01/19
+// Comment  :
+
+<group>
+amplfo_freq=5.00393
+fillfo_freq=5.00393
+pitchlfo_freq=5.00393
+ampeg_release=101.594
+loop_mode=no_loop
+ampeg_attack=0.001
+fil_type=lpf_2p
+cutoff=19914
+
+<region>
+sample=samples\Audio 21_bip.wav
+lokey=36 hikey=36
+pitch_keycenter=36
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 22_bip.wav
+lokey=38 hikey=38
+pitch_keycenter=38
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 23_bip.wav
+lokey=40 hikey=40
+pitch_keycenter=40
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 24_bip.wav
+lokey=41 hikey=41
+pitch_keycenter=41
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 25_bip.wav
+lokey=43 hikey=43
+pitch_keycenter=43
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 26_bip.wav
+lokey=48 hikey=48
+pitch_keycenter=48
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 27_bip.wav
+lokey=50 hikey=50
+pitch_keycenter=50
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 28_bip.wav
+lokey=52 hikey=52
+pitch_keycenter=52
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 29_bip.wav
+lokey=53 hikey=53
+pitch_keycenter=53
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 30_bip.wav
+lokey=55 hikey=55
+pitch_keycenter=55
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 31_bip.wav
+lokey=60 hikey=60
+pitch_keycenter=60
+offset=0
+end=98303
+loop_start=0
+loop_end=98303
+
+<region>
+sample=samples\Audio 32_bip.wav
+lokey=62 hikey=62
+pitch_keycenter=62
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 33_bip.wav
+lokey=64 hikey=64
+pitch_keycenter=64
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 34_bip.wav
+lokey=65 hikey=65
+pitch_keycenter=65
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 35_bip.wav
+lokey=67 hikey=67
+pitch_keycenter=67
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 36_bip.wav
+lokey=72 hikey=72
+pitch_keycenter=72
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 37_bip.wav
+lokey=74 hikey=74
+pitch_keycenter=74
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 38_bip.wav
+lokey=76 hikey=76
+pitch_keycenter=76
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 39_bip.wav
+lokey=77 hikey=77
+pitch_keycenter=77
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
+
+<region>
+sample=samples\Audio 40_bip.wav
+lokey=79 hikey=79
+pitch_keycenter=79
+offset=0
+end=65535
+loop_start=0
+loop_end=65535
