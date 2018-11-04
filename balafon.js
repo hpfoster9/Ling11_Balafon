@@ -21,6 +21,48 @@ function mouseReleased(){
 	B.release();
 }
 
+var sampler = new Tone.Sampler({
+	"C3" : "./Balafon_Soundfonts/Balafon/samples/Audio 1_bip.mp3",
+	"D#3" : "./Balafon_Soundfonts/Balafon/samples/Audio 2_bip.mp3",
+	"F#3" : "./Balafon_Soundfonts/Balafon/samples/Audio 3_bip.mp3",
+	"A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 4_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 5_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 6_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 7_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 8_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 9_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 10_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 11_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 12_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 13_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 14_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 15_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 16_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 17_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 18_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 19_bip.mp3",
+  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 20_bip.mp3",
+}, function(){
+	//sampler will repitch the closest sample
+	sampler.triggerAttack("C3")
+  sampler.triggerAttack("D#3")
+  sampler.triggerAttack("F#3")
+  sampler.triggerAttack("A3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+  sampler.triggerAttack("D3")
+})
 
 class Balafon{
 	constructor(num_planks, plank_width, start_x, start_y, max_height, min_height){
@@ -31,8 +73,8 @@ class Balafon{
 		this.max_height = max_height;
 		this.min_height = min_height;
 		this.planks = [];
-		
-		
+
+
 	}
 
 	generatePlanks(){
@@ -54,15 +96,15 @@ class Balafon{
 			console.log(note);
 
 			this.planks.push(new Plank(curr_x, curr_y, end_x, end_y, note, i));
-			
+
 			curr_height = curr_height-height_step;
-			
+
 		    curr_y = curr_y + height_step/2;
 			curr_x = curr_x + this.plank_width+5;
 			end_x = curr_x + this.plank_width;
 			end_y = end_y - height_step/2;
 
-			
+
 		}
 	}
 
@@ -129,13 +171,13 @@ class Plank{
 				fill(this.color.R/1.3, this.color.G/1.3, this.color.B/1.3);
 			}
 			console.log("in! "+this.start_x);
-			
+
 		}
 		else{
 			fill(this.color.R, this.color.G, this.color.B);
 		}
 		rect(this.start_x, this.start_y, this.end_x-this.start_x, this.end_y-this.start_y, 5);
-		
+
 		fill(255);
   		text(this.number, this.start_x+this.plank_width-10, this.end_y-10);
 	}
@@ -151,6 +193,6 @@ class Plank{
 		this.synth.triggerAttackRelease(this.tone, '8n');
 		console.log("CLICK: "+this.tone+" note");
 	}
-	
-		
+
+
 }
