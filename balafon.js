@@ -1,3 +1,46 @@
+var sample_notes = [["D",1],["F",1],["A",0],["C",1],["F",0]];
+var synth = new Tone.Sampler({
+    	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
+      "C1" : "./Balafon_Soundfonts/Balafon_mp3_files/4_bip.mp3",
+      "D1" : "./Balafon_Soundfonts/Balafon_mp3_files/5_bip.mp3",
+      "F1" : "./Balafon_Soundfonts/Balafon_mp3_files/6_bip.mp3",
+      "G#1" : "./Balafon_Soundfonts/Balafon_mp3_files/7_bip.mp3",
+      "A1" : "./Balafon_Soundfonts/Balafon_mp3_files/8_bip.mp3",
+      "C2" : "./Balafon_Soundfonts/Balafon_mp3_files/9_bip.mp3",
+      "D2" : "./Balafon_Soundfonts/Balafon_mp3_files/10_bip.mp3",
+      "F2" : "./Balafon_Soundfonts/Balafon_mp3_files/11_bip.mp3",
+      "G#2" : "./Balafon_Soundfonts/Balafon_mp3_files/12_bip.mp3",
+      "A2" : "./Balafon_Soundfonts/Balafon_mp3_files/13_bip.mp3",
+      "C3" : "./Balafon_Soundfonts/Balafon_mp3_files/14_bip.mp3",
+      "D3" : "./Balafon_Soundfonts/Balafon_mp3_files/15_bip.mp3",
+      "F3" : "./Balafon_Soundfonts/Balafon_mp3_files/16_bip.mp3",
+      "G#3" : "./Balafon_Soundfonts/Balafon_mp3_files/17_bip.mp3",
+      "D4" : "./Balafon_Soundfonts/Balafon_mp3_files/18_bip.mp3",
+      "F4" : "./Balafon_Soundfonts/Balafon_mp3_files/19_bip.mp3"
+    },  () => {
+    	//sampler will repitch the closest sample
+    	sampler.triggerAttack("A0")
+      sampler.triggerAttack("C1")
+      sampler.triggerAttack("D1")
+      sampler.triggerAttack("F1")
+      sampler.triggerAttack("G#1")
+      sampler.triggerAttack("A1")
+      sampler.triggerAttack("C2")
+      sampler.triggerAttack("D2")
+      sampler.triggerAttack("F2")
+      sampler.triggerAttack("G#2")
+      sampler.triggerAttack("A2")
+      sampler.triggerAttack("C3")
+      sampler.triggerAttack("D3")
+      sampler.triggerAttack("F3")
+      sampler.triggerAttack("G#3")
+      sampler.triggerAttack("D4")
+      sampler.triggerAttack("F4")
+    }, ).toMaster();
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function setup(){
   createCanvas(1000,800);
@@ -45,14 +88,8 @@ class Balafon{
 		var tones = ["A", "C", "D", "F", "G#"];
 		var key_map = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l"];
 
-		console.log(height_step);
-		console.log("in the generate");
 		for(let i=0; i<this.num_planks; i++){
-			console.log('IN THE FOR');
-			console.log(height_step);
-			console.log(curr_height);
 			var note = tones[(i%tones.length)]+String(Math.floor(((i-1)/tones.length))+1);
-			console.log(note);
 
 			this.planks.push(new Plank(curr_x, curr_y, end_x, end_y, note, i, key_map[i]));
 
@@ -74,9 +111,11 @@ class Balafon{
 	}
 
 	press(){
+  		B.autoplay(sample_notes);
+  		/*
 		for(var p in this.planks){
 			this.planks[p].press();
-		}
+		}*/
 	}
 
 	release(){
@@ -89,15 +128,29 @@ class Balafon{
 		var key_map = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l"];
 
 		if(key_map.indexOf(key) != -1) this.planks[key_map.indexOf(key)].clicked = true;
-		console.log(this);
+		
 	}
-
-	autoplay(notes){
-		for(note in notes){
-			console.log(note);
+	
+	clickPlank(tone){
+		for(var p in this.planks){
+			console.log(p);
+			if(this.planks[p].tone == tone){
+				this.planks[p].clicked = true;
+			}
 		}
 	}
 
+	async autoplay(notes){
+		for(var i=0; i<notes.length; i++){
+			let note = notes[i];
+			let letter = note[0];
+			let octave = note[1]+2;
+			let tone = letter+octave.toString();
+			console.log("AUTOPLAYED");
+			this.clickPlank(tone);
+			await sleep(300);
+		}
+	}
 }
 
 class Plank{
@@ -108,49 +161,10 @@ class Plank{
 		this.end_y = end_y;
 		this.tone = tone;
 		this.key = key;
-		console.log("TONE: "+this.tone);
 		this.number = number;
 		//this.synth = new Tone.Synth().toMaster();
 
-    // must use "python -m SimpleHTTPServer" in order for these files to load
-    this.synth = new Tone.Sampler({
-    	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
-      "C1" : "./Balafon_Soundfonts/Balafon_mp3_files/4_bip.mp3",
-      "D1" : "./Balafon_Soundfonts/Balafon_mp3_files/5_bip.mp3",
-      "F1" : "./Balafon_Soundfonts/Balafon_mp3_files/6_bip.mp3",
-      "G#1" : "./Balafon_Soundfonts/Balafon_mp3_files/7_bip.mp3",
-      "A1" : "./Balafon_Soundfonts/Balafon_mp3_files/8_bip.mp3",
-      "C2" : "./Balafon_Soundfonts/Balafon_mp3_files/9_bip.mp3",
-      "D2" : "./Balafon_Soundfonts/Balafon_mp3_files/10_bip.mp3",
-      "F2" : "./Balafon_Soundfonts/Balafon_mp3_files/11_bip.mp3",
-      "G#2" : "./Balafon_Soundfonts/Balafon_mp3_files/12_bip.mp3",
-      "A2" : "./Balafon_Soundfonts/Balafon_mp3_files/13_bip.mp3",
-      "C3" : "./Balafon_Soundfonts/Balafon_mp3_files/14_bip.mp3",
-      "D3" : "./Balafon_Soundfonts/Balafon_mp3_files/15_bip.mp3",
-      "F3" : "./Balafon_Soundfonts/Balafon_mp3_files/16_bip.mp3",
-      "G#3" : "./Balafon_Soundfonts/Balafon_mp3_files/17_bip.mp3",
-      "D4" : "./Balafon_Soundfonts/Balafon_mp3_files/18_bip.mp3",
-      "F4" : "./Balafon_Soundfonts/Balafon_mp3_files/19_bip.mp3"
-    },  () => {
-    	//sampler will repitch the closest sample
-    	sampler.triggerAttack("A0")
-      sampler.triggerAttack("C1")
-      sampler.triggerAttack("D1")
-      sampler.triggerAttack("F1")
-      sampler.triggerAttack("G#1")
-      sampler.triggerAttack("A1")
-      sampler.triggerAttack("C2")
-      sampler.triggerAttack("D2")
-      sampler.triggerAttack("F2")
-      sampler.triggerAttack("G#2")
-      sampler.triggerAttack("A2")
-      sampler.triggerAttack("C3")
-      sampler.triggerAttack("D3")
-      sampler.triggerAttack("F3")
-      sampler.triggerAttack("G#3")
-      sampler.triggerAttack("D4")
-      sampler.triggerAttack("F4")
-    }, ).toMaster()
+    
 
 		if((number+1)%5==0){
 			this.color = {
@@ -210,7 +224,7 @@ class Plank{
 
 	play_note(){
 		//play a middle 'C' for the duration of an 8th note
-		this.synth.triggerAttackRelease(this.tone, '16n');
+		synth.triggerAttackRelease(this.tone, '16n');
 		console.log("CLICK: "+this.tone+" note");
 	}
 
