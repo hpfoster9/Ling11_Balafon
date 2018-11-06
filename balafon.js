@@ -1,6 +1,17 @@
+const balafonPhrases = require('./phrases.json');
 
-function setup(){
-  createCanvas(1000,800);
+function insertPhrases() {
+  balafonPhrases.forEach(phrase => {
+    var x = document.getElementById("dropdownMenu1");
+    var option = document.createElement(phrase.seenku);
+    option.text = phrase.seenku;
+    console.log(option.text);
+  });
+}
+
+function setup() {
+  let canvas = createCanvas(1000,500);
+  canvas.parent('sketch-holder');
   B = new Balafon(19, 40, 10, 10, 400, 200);
   B.generatePlanks();
 }
