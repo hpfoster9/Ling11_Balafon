@@ -1,4 +1,3 @@
-var sample_notes = [["D",1],["F",1],["A",0],["C",1],["F",0]];
 var synth = new Tone.Sampler({
     	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
       "C1" : "./Balafon_Soundfonts/Balafon_mp3_files/4_bip.mp3",
@@ -42,6 +41,7 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 var balafonPhrases = phrases;
+var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 2000);
 
 function insertPhrases() {
   balafonPhrases.forEach(phrase => {
@@ -52,9 +52,29 @@ function insertPhrases() {
     opt.href = "#!";
     // Assign text and value to Option object
     opt.text = phrase.seenku;
+    opt.onclick = function(){B.autoplay(phrase.notes)};
 
     document.getElementById("dropdown-menu").appendChild(opt);
   });
+}
+
+function updatePhrase(tone){
+	clearTimeout(clearQueue);
+	let phrase = document.getElementById("queue").innerHTML;
+	document.getElementById("queue").innerHTML = phrase+" "+tone;
+	checkForCompletePhrase();
+	clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 2000);
+}
+
+function checkForCompletePhrase(){
+	/*
+	let curr_phrase = document.getElementById("queue").innerHTML.split(" ");
+	for(i in curr_phrase){
+		let note = curr_phrase[i].split("");
+
+	}
+	*/
+
 }
 
 function setup() {
@@ -128,11 +148,9 @@ class Balafon{
 	}
 
 	press(){
-  		B.autoplay(sample_notes);
-  		/*
 		for(var p in this.planks){
 			this.planks[p].press();
-		}*/
+		}
 	}
 
 	release(){
@@ -144,7 +162,10 @@ class Balafon{
 	key_press(key){
 		var key_map = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l"];
 
-		if(key_map.indexOf(key) != -1) this.planks[key_map.indexOf(key)].clicked = true;
+		if(key_map.indexOf(key) != -1){
+			this.planks[key_map.indexOf(key)].clicked = true;
+			updatePhrase(this.planks[key_map.indexOf(key)].tone);
+		}
 		
 	}
 	
@@ -236,6 +257,7 @@ class Plank{
 	press(){
 		if(this.mouseInRect()){
 			this.clicked = true;
+			updatePhrase(this.tone);
 		}
 	}
 
