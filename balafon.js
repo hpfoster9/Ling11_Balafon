@@ -1,11 +1,16 @@
-const balafonPhrases = require('./phrases.json');
+var balafonPhrases = phrases;
 
 function insertPhrases() {
   balafonPhrases.forEach(phrase => {
-    var x = document.getElementById("dropdownMenu1");
-    var option = document.createElement(phrase.seenku);
-    option.text = phrase.seenku;
-    console.log(option.text);
+
+    // Create an Option object
+    var opt = document.createElement("option");
+    opt.className = "dropdown-item";
+    opt.href = "#!";
+    // Assign text and value to Option object
+    opt.text = phrase.seenku;
+
+    document.getElementById("dropdown-menu").appendChild(opt);
   });
 }
 
@@ -14,6 +19,7 @@ function setup() {
   canvas.parent('sketch-holder');
   B = new Balafon(19, 40, 10, 10, 400, 200);
   B.generatePlanks();
+  insertPhrases();
 }
 
 function draw(){

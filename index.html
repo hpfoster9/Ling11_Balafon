@@ -8,32 +8,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.min.js"></script>
     <!--script src="p5.js"></script>-->
     <!--<script src="slotPiece.js"></script>-->
-
+    <script type="text/javascript" src="phrases.js"></script>
     <script src="./Tone.min.js"></script>
     <script src="./balafon.js"></script>
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Balafon</title>
   </head>
   <body>
+    <div class="d-inline-block" id="sketch-holder">
+        <!-- Our sketch will go here! -->
+    </div>
 
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle"
-                type="button" id="dropdownMenu1" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-          Pick a phrase to be played
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <div class="dropdown d-inline-block">
+      <button class="btn btn-secondary dropdown-toggle"
+              type="button" id="dropdownMenu1" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+        Pick a phrase to play!
+      </button>
+      <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-        </div>
       </div>
-
-      <div id="sketch-holder">
-          <!-- Our sketch will go here! -->
-      </div>
-
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

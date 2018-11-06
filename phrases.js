@@ -1,4 +1,4 @@
-[
+phrases = [
   {
     "english": "Hello [singular]",
     "seenku": "i kuna wei",
@@ -39,4 +39,4 @@
     "seenku": "sumwalato mukri",
     "notes": [["D",1],["F",1],["A",1],["C",1],["F",0]]
   }
-]
+];
