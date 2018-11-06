@@ -1,3 +1,4 @@
+
 function setup(){
   createCanvas(1000,800);
   B = new Balafon(19, 40, 10, 10, 400, 200);
@@ -18,49 +19,6 @@ function mouseReleased(){
 	B.release();
 }
 
-var sampler = new Tone.Sampler({
-	"C3" : "./Balafon_Soundfonts/Balafon/samples/Audio 1_bip.mp3",
-	"D#3" : "./Balafon_Soundfonts/Balafon/samples/Audio 2_bip.mp3",
-	"F#3" : "./Balafon_Soundfonts/Balafon/samples/Audio 3_bip.mp3",
-	"A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 4_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 5_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 6_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 7_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 8_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 9_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 10_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 11_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 12_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 13_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 14_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 15_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 16_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 17_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 18_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 19_bip.mp3",
-  "A3" : "./Balafon_Soundfonts/Balafon/samples/Audio 20_bip.mp3",
-}, function(){
-	//sampler will repitch the closest sample
-	sampler.triggerAttack("C3")
-  sampler.triggerAttack("D#3")
-  sampler.triggerAttack("F#3")
-  sampler.triggerAttack("A3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-  sampler.triggerAttack("D3")
-})
-
 function keyPressed() {
 	var key = String.fromCharCode(keyCode).toLowerCase();
 	B.key_press(key);
@@ -75,9 +33,6 @@ class Balafon{
 		this.max_height = max_height;
 		this.min_height = min_height;
 		this.planks = [];
-
-
-
 	}
 
 	generatePlanks(){
@@ -135,7 +90,12 @@ class Balafon{
 
 		if(key_map.indexOf(key) != -1) this.planks[key_map.indexOf(key)].clicked = true;
 		console.log(this);
+	}
 
+	autoplay(notes){
+		for(note in notes){
+			console.log(note);
+		}
 	}
 
 }
@@ -150,7 +110,47 @@ class Plank{
 		this.key = key;
 		console.log("TONE: "+this.tone);
 		this.number = number;
-		this.synth = new Tone.Synth().toMaster();
+		//this.synth = new Tone.Synth().toMaster();
+
+    // must use "python -m SimpleHTTPServer" in order for these files to load
+    this.synth = new Tone.Sampler({
+    	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
+      "C1" : "./Balafon_Soundfonts/Balafon_mp3_files/4_bip.mp3",
+      "D1" : "./Balafon_Soundfonts/Balafon_mp3_files/5_bip.mp3",
+      "F1" : "./Balafon_Soundfonts/Balafon_mp3_files/6_bip.mp3",
+      "G#1" : "./Balafon_Soundfonts/Balafon_mp3_files/7_bip.mp3",
+      "A1" : "./Balafon_Soundfonts/Balafon_mp3_files/8_bip.mp3",
+      "C2" : "./Balafon_Soundfonts/Balafon_mp3_files/9_bip.mp3",
+      "D2" : "./Balafon_Soundfonts/Balafon_mp3_files/10_bip.mp3",
+      "F2" : "./Balafon_Soundfonts/Balafon_mp3_files/11_bip.mp3",
+      "G#2" : "./Balafon_Soundfonts/Balafon_mp3_files/12_bip.mp3",
+      "A2" : "./Balafon_Soundfonts/Balafon_mp3_files/13_bip.mp3",
+      "C3" : "./Balafon_Soundfonts/Balafon_mp3_files/14_bip.mp3",
+      "D3" : "./Balafon_Soundfonts/Balafon_mp3_files/15_bip.mp3",
+      "F3" : "./Balafon_Soundfonts/Balafon_mp3_files/16_bip.mp3",
+      "G#3" : "./Balafon_Soundfonts/Balafon_mp3_files/17_bip.mp3",
+      "D4" : "./Balafon_Soundfonts/Balafon_mp3_files/18_bip.mp3",
+      "F4" : "./Balafon_Soundfonts/Balafon_mp3_files/19_bip.mp3"
+    },  () => {
+    	//sampler will repitch the closest sample
+    	sampler.triggerAttack("A0")
+      sampler.triggerAttack("C1")
+      sampler.triggerAttack("D1")
+      sampler.triggerAttack("F1")
+      sampler.triggerAttack("G#1")
+      sampler.triggerAttack("A1")
+      sampler.triggerAttack("C2")
+      sampler.triggerAttack("D2")
+      sampler.triggerAttack("F2")
+      sampler.triggerAttack("G#2")
+      sampler.triggerAttack("A2")
+      sampler.triggerAttack("C3")
+      sampler.triggerAttack("D3")
+      sampler.triggerAttack("F3")
+      sampler.triggerAttack("G#3")
+      sampler.triggerAttack("D4")
+      sampler.triggerAttack("F4")
+    }, ).toMaster()
 
 		if((number+1)%5==0){
 			this.color = {
