@@ -1,3 +1,5 @@
+//python -m SimpleHTTPServer
+
 var synth = new Tone.Sampler({
     	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
       "C1" : "./Balafon_Soundfonts/Balafon_mp3_files/4_bip.mp3",
@@ -74,7 +76,6 @@ function checkForCompletePhrase(){
 
 	}
 	*/
-
 }
 
 function setup() {
@@ -166,9 +167,9 @@ class Balafon{
 			this.planks[key_map.indexOf(key)].clicked = true;
 			updatePhrase(this.planks[key_map.indexOf(key)].tone);
 		}
-		
+
 	}
-	
+
 	clickPlank(tone){
 		for(var p in this.planks){
 			console.log(p);
@@ -202,7 +203,7 @@ class Plank{
 		this.number = number;
 		//this.synth = new Tone.Synth().toMaster();
 
-    
+
 
 		if((number+1)%5==0){
 			this.color = {
