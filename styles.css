@@ -1,11 +1,8 @@
-.title {
-  font-family: 'Lato', sans-serif;
-}
-
-.title-2 {
+.author-title {
   font-style: italic;
 }
 
 body {
   background-image: url("./light-background.png");
+  font-family: 'Lato', sans-serif;
 }

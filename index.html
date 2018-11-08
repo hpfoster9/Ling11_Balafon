@@ -22,27 +22,40 @@
     <title>Balafon</title>
   </head>
   <body>
-    <h1 class="title text-center mt-2">Virtual Balafon</h1>
-    <h5 class="title title-2 text-center">by Henry Foster & Syed Tanveer</h5>
-    <div class="d-inline-block m-5" id="sketch-holder">
-        <!-- Our sketch will go here! -->
-    </div>
+    <h1 class="text-center mt-2">Virtual Balafon</h1>
+    <h5 class="author-title text-center">by Henry Foster & Syed Tanveer</h5>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="dropdown d-inline-block">
+            <button class="btn dropdown-toggle btn-light"
+                    type="button" id="dropdownMenu1" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              Pick a phrase to play!
+            </button>
+            <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenu1">
 
-    <div class="dropdown d-inline-block">
-      <button class="btn dropdown-toggle btn-light"
-              type="button" id="dropdownMenu1" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-        Pick a phrase to play!
-      </button>
-      <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="dropdownMenu1">
-
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <<div class="col d-flex justify-content-center">
+        <div class="d-inline-block text-center" id="sketch-holder">
+            <!-- Our sketch will go here! -->
+        </div>
       </div>
     </div>
-    <h3 id="queue"></h3>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <h3 id="queue" class=""></h3>
+      </div>
+    </div>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </div>
   </body>
 </html>

@@ -5,21 +5,6 @@ phrases = [
     "notes": [["D",1],["F",1],["A",0],["C",1],["F",0]]
   },
   {
-    "english": "Hello [to multiple people]",
-    "seenku": "a kuna we",
-    "notes": [["D",1],["F",1],["A",0],["C",1],["F",0]]
-  },
-  {
-    "english": "response to hello [man]",
-    "seenku": "Mmaa",
-    "notes": []
-  },
-  {
-    "english": "response to hello [woman]",
-    "seenku": "foome",
-    "notes": []
-  },
-  {
     "english": "Has your morning been good?",
     "seenku": "a godageku ku aa",
     "notes": [["F",0],["F",0],["F",0],["F",0],["C",1],["A",0],["C",1], ["F",0]]

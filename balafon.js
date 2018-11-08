@@ -1,4 +1,5 @@
 //python -m SimpleHTTPServer
+var bg;
 
 var synth = new Tone.Sampler({
     	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
@@ -46,6 +47,7 @@ var balafonPhrases = phrases;
 var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 2000);
 
 function insertPhrases() {
+  console.log("inserted phrases");
   balafonPhrases.forEach(phrase => {
 
     // Create an Option object
@@ -100,8 +102,9 @@ function checkForCompletePhrase(){
 }
 
 function setup() {
-  let canvas = createCanvas(1000,500);
+  let canvas = createCanvas(900,450);
   canvas.parent('sketch-holder');
+  bg = loadImage('./light-background.png')
   B = new Balafon(19, 40, 10, 10, 400, 200);
   B.generatePlanks();
   insertPhrases();
@@ -109,7 +112,7 @@ function setup() {
 
 function draw(){
   clear();
-  background(loadImage('./light-background.png'));
+  background(bg);
   B.draw();
 }
 
