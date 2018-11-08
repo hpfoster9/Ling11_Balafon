@@ -100,8 +100,8 @@ function checkForCompletePhrase(){
 			document.getElementById("queue").innerHTML = "You just played: "+balafonPhrases[p].english;
 		}
 		else{
-			// console.log("normal: "+normalized_phrase);
-			// console.log("accepted: "+accepted_phrase_string);
+			console.log("normal: "+normalized_phrase);
+			console.log("accepted: "+accepted_phrase_string);
 		}
 		
 	}

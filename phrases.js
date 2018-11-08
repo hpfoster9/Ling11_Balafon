@@ -7,7 +7,7 @@ phrases = [
   {
     "english": "Has your morning been good?",
     "seenku": "a godageku ku aa",
-    "notes": [["F",0],["F",0],["F",0],["F",0],["C",1],["A",0],["C",1], ["F",0]]
+    "notes": [["F",0],["F",0],["F",0],["F",0],["F",0],["C",1],["A",0],["C",1], ["F",0]]
   },
   {
     "english": "Is your wife good?",
@@ -20,18 +20,13 @@ phrases = [
     "notes": [["F",0],["C",1],["D",1],["C",1],["A",0],["C",1],["F", 0]]
   },
   {
-    "english": "They were good there",
-    "seenku": "i kua si nina",
-    "notes": []
-  },
-  {
     "english": "May God give you a good day",
     "seenku": "sumna la sonta weko",
-    "notes": []
+    "notes": [["D",1],["D",1],["D",1],["A",0],["F",0],["C",1],["C",1],["C",1],["C",1]]
   },
   {
     "english": "May God leave you near me",
     "seenku": "sumna la to mo kare",
-    "notes": []
+    "notes": [["F",1],["F",1],["F",1],["D",1],["A",0],["C",1],["F",0],["F",0]]
   }
 ]
