@@ -1,3 +1,6 @@
+//python -m SimpleHTTPServer
+var bg;
+
 var synth = new Tone.Sampler({
     	"A0" : "./Balafon_Soundfonts/Balafon_mp3_files/3_bip.mp3",
       "C1" : "./Balafon_Soundfonts/Balafon_mp3_files/4_bip.mp3",
@@ -44,6 +47,7 @@ var balafonPhrases = phrases;
 var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 3000);
 
 function insertPhrases() {
+  console.log("inserted phrases");
   balafonPhrases.forEach(phrase => {
 
     // Create an Option object
@@ -51,9 +55,8 @@ function insertPhrases() {
     opt.className = "dropdown-item";
     opt.href = "#!";
     // Assign text and value to Option object
-    opt.text = phrase.seenku;
+    opt.text = phrase.english;
     opt.onclick = function(){B.autoplay(phrase.notes)};
-
     document.getElementById("dropdown-menu").appendChild(opt);
   });
 }
@@ -105,8 +108,9 @@ function checkForCompletePhrase(){
 }
 
 function setup() {
-  let canvas = createCanvas(1000,500);
+  let canvas = createCanvas(900,450);
   canvas.parent('sketch-holder');
+  bg = loadImage('./light-background.png')
   B = new Balafon(19, 40, 10, 10, 400, 200);
   B.generatePlanks();
   insertPhrases();
@@ -114,7 +118,7 @@ function setup() {
 
 function draw(){
   clear();
-  background(250);
+  background(bg);
   B.draw();
 }
 
@@ -159,7 +163,7 @@ class Balafon{
 
 			curr_height = curr_height-height_step;
 
-		    curr_y = curr_y + height_step/2;
+		  curr_y = curr_y + height_step/2;
 			curr_x = curr_x + this.plank_width+5;
 			end_x = curr_x + this.plank_width;
 			end_y = end_y - height_step/2;
@@ -193,9 +197,9 @@ class Balafon{
 			this.planks[key_map.indexOf(key)].clicked = true;
 			updatePhrase(this.planks[key_map.indexOf(key)].tone);
 		}
-		
+
 	}
-	
+
 	clickPlank(tone){
 		for(var p in this.planks){
 			console.log(p);
@@ -229,7 +233,7 @@ class Plank{
 		this.number = number;
 		//this.synth = new Tone.Synth().toMaster();
 
-    
+
 
 		if((number+1)%5==0){
 			this.color = {
