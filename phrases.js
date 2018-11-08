@@ -1,42 +1,52 @@
 phrases = [
   {
-    "english": "Hello [singular]",
-    "seenku": "i kuna wei",
+    "english": "Hello [to multiple people]",
+    "seenku": "i kuna we",
     "notes": [["D",1],["F",1],["A",0],["C",1],["F",0]]
   },
   {
-    "english": "",
-    "seenku": "Mbaa",
+    "english": "Hello [to multiple people]",
+    "seenku": "a kuna we",
+    "notes": [["D",1],["F",1],["A",0],["C",1],["F",0]]
+  },
+  {
+    "english": "response to hello [man]",
+    "seenku": "Mmaa",
     "notes": []
   },
   {
-    "english": "",
-    "seenku": "agodagequ qua",
+    "english": "response to hello [woman]",
+    "seenku": "foome",
+    "notes": []
+  },
+  {
+    "english": "Has your morning been good?",
+    "seenku": "a godageku ku aa",
     "notes": [["F",0],["F",0],["F",0],["F",0],["C",1],["A",0],["C",1], ["F",0]]
   },
   {
-    "english": "",
-    "seenku": "amni qua",
+    "english": "Is your wife good?",
+    "seenku": "a mni ku aa",
     "notes": [["F",0],["D",1],["D",1],["C",1],["A",0],["C",1], ["F",0]]
   },
   {
-    "english": "",
-    "seenku": "adronge qua",
+    "english": "Are the children good?",
+    "seenku": "a dronge ku aa",
     "notes": [["F",0],["C",1],["D",1],["C",1],["A",0],["C",1],["F", 0]]
   },
   {
-    "english": "",
-    "seenku": "ikuanchinine",
+    "english": "They were good there",
+    "seenku": "i kua si nina",
     "notes": []
   },
   {
-    "english": "",
-    "seenku": "sumwalato sontaweko",
+    "english": "May God give you a good day",
+    "seenku": "sumna la sonta weko",
     "notes": []
   },
   {
-    "english": "",
-    "seenku": "sumwalato mukri",
+    "english": "May God leave you near me",
+    "seenku": "sumna la to mo kare",
     "notes": []
   }
 ]

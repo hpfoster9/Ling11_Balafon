@@ -53,9 +53,8 @@ function insertPhrases() {
     opt.className = "dropdown-item";
     opt.href = "#!";
     // Assign text and value to Option object
-    opt.text = phrase.seenku;
+    opt.text = phrase.english;
     opt.onclick = function(){B.autoplay(phrase.notes)};
-
     document.getElementById("dropdown-menu").appendChild(opt);
   });
 }
@@ -77,9 +76,6 @@ function checkForCompletePhrase(){
 		let octave = parseInt(note[1]);
 		if(octave > max) max = octave;
 	}
-<<<<<<< HEAD
-	*/
-=======
 
 	normalized_phrase = curr_phrase.replace(max.toString(), "1").replace((max-1).toString(), "0");
 
@@ -101,7 +97,6 @@ function checkForCompletePhrase(){
 			console.log("accepted: "+accepted_phrase_string);
 		}
 	}
->>>>>>> 9c13d0bd91767ae3578b9cbdc564df34b8b56483
 }
 
 function setup() {
@@ -114,7 +109,7 @@ function setup() {
 
 function draw(){
   clear();
-  background(250);
+  background(loadImage('./light-background.png'));
   B.draw();
 }
 
@@ -159,7 +154,7 @@ class Balafon{
 
 			curr_height = curr_height-height_step;
 
-		    curr_y = curr_y + height_step/2;
+		  curr_y = curr_y + height_step/2;
 			curr_x = curr_x + this.plank_width+5;
 			end_x = curr_x + this.plank_width;
 			end_y = end_y - height_step/2;

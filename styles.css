@@ -5,3 +5,7 @@
 .title-2 {
   font-style: italic;
 }
+
+body {
+  background-image: url("./light-background.png");
+}
