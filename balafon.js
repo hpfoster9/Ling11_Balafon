@@ -41,7 +41,7 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 var balafonPhrases = phrases;
-var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 2000);
+var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 3000);
 
 function insertPhrases() {
   balafonPhrases.forEach(phrase => {
@@ -63,7 +63,7 @@ function updatePhrase(tone){
 	let phrase = document.getElementById("queue").innerHTML;
 	document.getElementById("queue").innerHTML = phrase+" "+tone;
 	checkForCompletePhrase();
-	clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 2000);
+	clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 3000);
 }
 
 function checkForCompletePhrase(){
@@ -75,8 +75,12 @@ function checkForCompletePhrase(){
 		let octave = parseInt(note[1]);
 		if(octave > max) max = octave;
 	}
+	print("MAX: "+max);
+	var maxString = max.toString();
+	var reMax = new RegExp(max.toString(), 'g');
+	var reMin = new RegExp((max-1).toString(), 'g');
 
-	normalized_phrase = curr_phrase.replace(max.toString(), "1").replace((max-1).toString(), "0");
+	normalized_phrase = curr_phrase.replace(reMax, "1").replace(reMin, "0");
 
 	for(p in balafonPhrases){
 		let accepted_phrase = balafonPhrases[p].notes;
@@ -86,15 +90,17 @@ function checkForCompletePhrase(){
 			accepted_phrase_array.push(note);
 		}
 		accepted_phrase_string = accepted_phrase_array.join(" ");
-
-		if(normalized_phrase == accepted_phrase_string){
+		
+		if(normalized_phrase.trim() === accepted_phrase_string.trim()){
 			console.log("FOUND A MATCH");
 			console.log(balafonPhrases[p].seenku);
+			document.getElementById("queue").innerHTML = "You just played: "+balafonPhrases[p].english+"!!";
 		}
 		else{
-			console.log("normal: "+normalized_phrase);
-			console.log("accepted: "+accepted_phrase_string);
+			// console.log("normal: "+normalized_phrase);
+			// console.log("accepted: "+accepted_phrase_string);
 		}
+		
 	}
 }
 
