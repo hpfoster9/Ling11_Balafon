@@ -44,7 +44,7 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 var balafonPhrases = phrases;
-var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 3000);
+var clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 1500);
 
 function insertPhrases() {
   console.log("inserted phrases");
@@ -66,7 +66,7 @@ function updatePhrase(tone){
 	let phrase = document.getElementById("queue").innerHTML;
 	document.getElementById("queue").innerHTML = phrase+" "+tone;
 	checkForCompletePhrase();
-	clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 3000);
+	clearQueue = setInterval(function(){ document.getElementById("queue").innerHTML = "" }, 1500);
 }
 
 function checkForCompletePhrase(){
@@ -97,7 +97,7 @@ function checkForCompletePhrase(){
 		if(normalized_phrase.trim() === accepted_phrase_string.trim()){
 			console.log("FOUND A MATCH");
 			console.log(balafonPhrases[p].seenku);
-			document.getElementById("queue").innerHTML = "You just played: "+balafonPhrases[p].english+"!!";
+			document.getElementById("queue").innerHTML = "You just played: "+balafonPhrases[p].english;
 		}
 		else{
 			// console.log("normal: "+normalized_phrase);
