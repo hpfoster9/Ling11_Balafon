@@ -67,14 +67,35 @@ function updatePhrase(tone){
 }
 
 function checkForCompletePhrase(){
-	/*
-	let curr_phrase = document.getElementById("queue").innerHTML.split(" ");
-	for(i in curr_phrase){
-		let note = curr_phrase[i].split("");
-
+	let curr_phrase = document.getElementById("queue").innerHTML;
+	let curr_phrase_array = curr_phrase.split(" ");
+	let max = -1;
+	for(i in curr_phrase_array){
+		let note = curr_phrase_array[i].split("");
+		let octave = parseInt(note[1]);
+		if(octave > max) max = octave;
 	}
-	*/
 
+	normalized_phrase = curr_phrase.replace(max.toString(), "1").replace((max-1).toString(), "0");
+
+	for(p in balafonPhrases){
+		let accepted_phrase = balafonPhrases[p].notes;
+		let accepted_phrase_array = [];
+		for(n in accepted_phrase){
+			let note = accepted_phrase[n].join("");
+			accepted_phrase_array.push(note);
+		}
+		accepted_phrase_string = accepted_phrase_array.join(" ");
+
+		if(normalized_phrase == accepted_phrase_string){
+			console.log("FOUND A MATCH");
+			console.log(balafonPhrases[p].seenku);
+		}
+		else{
+			console.log("normal: "+normalized_phrase);
+			console.log("accepted: "+accepted_phrase_string);
+		}
+	}
 }
 
 function setup() {
@@ -186,7 +207,7 @@ class Balafon{
 			let tone = letter+octave.toString();
 			console.log("AUTOPLAYED");
 			this.clickPlank(tone);
-			await sleep(300);
+			await sleep(200);
 		}
 	}
 }
