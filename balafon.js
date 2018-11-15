@@ -17,27 +17,11 @@ var synth = new Tone.Sampler({
       "D3" : "./Balafon_Soundfonts/Balafon_mp3_files/15_bip.mp3",
       "F3" : "./Balafon_Soundfonts/Balafon_mp3_files/16_bip.mp3",
       "G#3" : "./Balafon_Soundfonts/Balafon_mp3_files/17_bip.mp3",
-      "D4" : "./Balafon_Soundfonts/Balafon_mp3_files/18_bip.mp3",
-      "F4" : "./Balafon_Soundfonts/Balafon_mp3_files/19_bip.mp3"
+      "A3" : "./Balafon_Soundfonts/Balafon_mp3_files/18_bip.mp3",
+      "C4" :"./Balafon_Soundfonts/Balafon_mp3_files/19_bip.mp3",
+      "D4" : "./Balafon_Soundfonts/Balafon_mp3_files/20_bip.mp3",
     },  () => {
     	//sampler will repitch the closest sample
-    	sampler.triggerAttack("A0")
-      sampler.triggerAttack("C1")
-      sampler.triggerAttack("D1")
-      sampler.triggerAttack("F1")
-      sampler.triggerAttack("G#1")
-      sampler.triggerAttack("A1")
-      sampler.triggerAttack("C2")
-      sampler.triggerAttack("D2")
-      sampler.triggerAttack("F2")
-      sampler.triggerAttack("G#2")
-      sampler.triggerAttack("A2")
-      sampler.triggerAttack("C3")
-      sampler.triggerAttack("D3")
-      sampler.triggerAttack("F3")
-      sampler.triggerAttack("G#3")
-      sampler.triggerAttack("D4")
-      sampler.triggerAttack("F4")
     }, ).toMaster();
 
 function sleep(ms) {
@@ -83,14 +67,24 @@ function checkForCompletePhrase(){
 	var reMax = new RegExp(max.toString(), 'g');
 	var reMin = new RegExp((max-1).toString(), 'g');
 
-	normalized_phrase = curr_phrase.replace(reMax, "1").replace(reMin, "0");
+	normalized_phrase = curr_phrase.replace(reMin, "0").replace(reMax, "1");
 
 	for(p in balafonPhrases){
-		let accepted_phrase = balafonPhrases[p].notes;
+		let accepted_phrase_multi = balafonPhrases[p].notes.slice();
+		let accepted_phrase = [];
 		let accepted_phrase_array = [];
+
+		for(n in accepted_phrase_multi){
+			console.log("MULTI");
+			console.log(accepted_phrase_multi[n]);
+			accepted_phrase = accepted_phrase.concat(accepted_phrase_multi[n]);
+		}
+		console.log(accepted_phrase);
 		for(n in accepted_phrase){
-			let note = accepted_phrase[n].join("");
-			accepted_phrase_array.push(note);
+			if(accepted_phrase[n] != 1 && accepted_phrase[n] != 2){
+				let note = accepted_phrase[n].join("");
+				accepted_phrase_array.push(note);
+			}
 		}
 		accepted_phrase_string = accepted_phrase_array.join(" ");
 		
@@ -210,14 +204,48 @@ class Balafon{
 	}
 
 	async autoplay(notes){
+		updatePhrase("Notes: ");
 		for(var i=0; i<notes.length; i++){
-			let note = notes[i];
-			let letter = note[0];
-			let octave = note[1]+2;
-			let tone = letter+octave.toString();
-			console.log("AUTOPLAYED");
-			this.clickPlank(tone);
-			await sleep(200);
+			let note_group = notes[i];
+			let num_notes = note_group[0]
+			if(num_notes == 1){
+				let note = note_group[1];
+				let letter = note[0]
+				let octave = note[1]+2;
+				let tone = letter+octave.toString();
+
+				console.log("AUTOPLAYED");
+				console.log(tone);
+				this.clickPlank(tone);
+				updatePhrase(tone);
+				await sleep(200);
+			}
+			else{
+				console.log(num_notes);
+				let note1 = note_group[1];
+				let letter1 = note1[0]
+				let octave1 = note1[1]+2;
+				let tone1 = letter1+octave1.toString();
+
+				let note2 = note_group[2];
+				let letter2 = note2[0]
+				let octave2 = note2[1]+2;
+				let tone2 = letter2+octave2.toString();
+
+				this.clickPlank(tone1);
+				updatePhrase(tone1);
+				await sleep(100);
+				this.clickPlank(tone2);
+				updatePhrase(tone2);
+				await sleep(200);
+
+			}
+			// let letter = note[1];
+			// let octave = note[2]+2;
+			// let tone = letter+octave.toString();
+			// console.log("AUTOPLAYED");
+			// this.clickPlank(tone);
+			// await sleep(200);
 		}
 	}
 }
